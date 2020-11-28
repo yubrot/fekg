@@ -1,0 +1,50 @@
+query template($id: ID!) {
+  template(id: $id) {
+    id
+    name
+    creator
+    baseImage
+    accessibility
+    labels {
+      size
+      color
+      text
+      bold
+      vertical
+      x
+      y
+    }
+  }
+}
+
+query myTemplates($first: Int!, $after: ID) {
+  templates: my(first: $first, after: $after) {
+    id
+    name
+    baseImage
+  }
+}
+
+query publishedTemplates($first: Int!, $after: ID) {
+  templates: published(first: $first, after: $after) {
+    id
+    name
+    baseImage
+  }
+}
+
+mutation deleteUser($id: ID!) {
+  succeed: deleteUser(id: $id)
+}
+
+mutation createTemplate($name: String!, $image: Upload!) {
+  id: createTemplate(name: $name, image: $image)
+}
+
+mutation deleteTemplate($id: ID!) {
+  succeed: deleteTemplate(id: $id)
+}
+
+mutation updateTemplate($id: ID!, $input: TemplateInput!) {
+  succeed: updateTemplate(id: $id, input: $input)
+}

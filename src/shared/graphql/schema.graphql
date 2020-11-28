@@ -1,0 +1,53 @@
+type Query {
+  template(id: ID!): Template!
+  my(first: Int!, after: ID): [Template!]!
+  published(first: Int!, after: ID): [Template!]!
+}
+
+type Mutation {
+  deleteUser(id: ID!): Boolean!
+  createTemplate(name: String!, image: Upload!): String!
+  deleteTemplate(id: ID!): Boolean!
+  updateTemplate(id: ID!, input: TemplateInput!): Boolean!
+}
+
+type Template {
+  id: ID!
+  name: String!
+  creator: ID!
+  baseImage: ID!
+  accessibility: Accessiblity!
+  labels: [Label!]
+}
+
+enum Accessiblity {
+  PRIVATE
+  PUBLIC
+}
+
+type Label {
+  size: Float!
+  color: String!
+  text: String!
+  bold: Boolean!
+  vertical: Boolean!
+  x: Int!
+  y: Int!
+}
+
+input TemplateInput {
+  name: String
+  image: Upload
+  accessibility: Accessiblity
+  labels: [LabelInput!]
+}
+
+input LabelInput {
+  size: Float!
+  color: String!
+  text: String!
+  bold: Boolean!
+  vertical: Boolean!
+  x: Int!
+  y: Int!
+}

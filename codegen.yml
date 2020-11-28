@@ -1,0 +1,24 @@
+schema:
+  - ./src/shared/graphql/schema.graphql
+  - scalar Upload
+documents:
+  - ./src/shared/graphql/documents.graphql
+config:
+  enumsAsConst: true
+generates:
+  ./src/server/graphql/types.ts:
+    config:
+      useIndexSignature: true
+      scalars:
+        Upload: any # graphql-upload/FileUpload
+    plugins:
+      - typescript
+      - typescript-resolvers
+  ./src/client/hooks/infrastructure/graphql-sdk.ts:
+    config:
+      scalars:
+        Upload: Blob
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-graphql-request

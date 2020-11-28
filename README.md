@@ -8,7 +8,9 @@ FEKG is a tiny web application created for learning Web front-end.
 
 ## Setup
 
-- TODO
+- TODO: Firebase
+- Copy `.env.example` to `.env` and edit it to fit your environment.
+- TODO: Vercel
 
 ```bash
 npm install

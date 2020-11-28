@@ -1,0 +1,52 @@
+@tailwind base;
+
+@font-face {
+  font-family: 'GenEiAntique';
+  src: url('/GenEiAntiqueNv5-M.ttf') format('truetype');
+}
+
+body {
+  @apply bg-bluegray-100 text-bluegray-700;
+}
+
+@tailwind components;
+
+.cc {
+  @apply 2xl:container 2xl:mx-auto;
+}
+
+.label {
+  @apply text-bluegray-500 text-xl font-bold flex items-center py-2 px-4;
+}
+
+.text-field {
+  @apply text-bluegray-700 placeholder-bluegray-500 focus:outline-none focus:placeholder-bluegray-300;
+}
+
+.outlined {
+  @apply rounded-md py-2 px-4 border border-bluegray-400;
+}
+
+.button {
+  @apply transition cursor-pointer disabled:cursor-default disabled:pointer-events-none focus:outline-none;
+}
+
+.primary-button {
+  @apply bg-blue-500 text-white shadow-md py-2 px-4 rounded-md font-bold flex items-center space-x-1 hover:bg-blue-400 disabled:bg-bluegray-300 disabled:shadow-none;
+}
+
+.primary-button.not {
+  @apply bg-red-500 hover:bg-red-400;
+}
+
+.icon-button {
+  @apply w-16 h-16 text-xs text-bluegray-700 flex flex-col justify-center items-center space-y-1 hover:bg-bluegray-200 disabled:text-bluegray-400;
+}
+
+@tailwind utilities;
+
+.overlay::after {
+  content: '';
+
+  @apply fixed z-10 cursor-default inset-0;
+}
