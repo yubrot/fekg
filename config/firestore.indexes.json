@@ -1,0 +1,44 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "templates",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "accessibility",
+          "order": "DESCENDING"
+        },
+        {
+          "fieldPath": "publishedAt",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "templates",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "creator",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "createdAt",
+          "order": "DESCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": [
+    {
+      "collectionGroup": "templates",
+      "fieldPath": "baseImage",
+      "indexes": []
+    },
+    {
+      "collectionGroup": "templates",
+      "fieldPath": "labels",
+      "indexes": []
+    }
+  ]
+}

@@ -37,3 +37,11 @@ yarn-error.log*
 src/graphql/schema.json
 src/client/hooks/infrastructure/graphql-sdk.ts
 src/server/graphql/types.ts
+
+# Firebase logs
+firebase-debug.log*
+firebase-debug.*.log*
+
+# Firebase cache
+.firebase/
+
