@@ -3,6 +3,7 @@
 FEKG is a small Next.js application created for learning Web Frontend.
 
 - [Live Demo](https://fekg.vercel.app/)
+- [Random notes (Japanese)](https://scrapbox.io/yubrot/FEKG:_Fast_Enough_Kusokora_Generator)
 
 ## Features
 
