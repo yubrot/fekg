@@ -101,8 +101,8 @@ export function sampleSurroundingColors(
 
   for (let i = 0; i < 36; ++i) {
     const r = (i / 36) * Math.PI * 2;
-    const rx = Math.cos(r),
-      ry = Math.sin(r);
+    const rx = Math.cos(r);
+    const ry = Math.sin(r);
     // Get the outermost point at this angle
     const [x, y] = maxBy(points, ([x, y]) => (x - cx) * rx + (y - cy) * ry);
     const color = colorAt(x + radius * rx, y + radius * ry);

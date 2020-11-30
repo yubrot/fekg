@@ -128,16 +128,21 @@ export const Mutation: gql.MutationResolvers<Context> = {
     const newImage = image ? await images.update('base-images', doc.id, await image) : null;
     const publishedAt = accessibility == 'PUBLIC' && !data.publishedAt ? new Date() : null;
 
-    await doc.set(
-      {
-        ...(name ? { name } : {}),
-        ...(newImage ? { baseImage: newImage.id } : {}),
-        ...(accessibility ? { accessibility } : {}),
-        ...(labels ? { labels } : {}),
-        ...(publishedAt ? { publishedAt } : {}),
-      },
-      { merge: true }
-    );
+    const change: Partial<templates.Template> = {
+      ...(name ? { name } : {}),
+      ...(newImage ? { baseImage: newImage.id } : {}),
+      ...(accessibility ? { accessibility } : {}),
+      ...(labels ? { labels } : {}),
+      ...(publishedAt ? { publishedAt } : {}),
+    };
+
+    try {
+      templates.validate(change);
+      await doc.set(change, { merge: true });
+    } catch (e) {
+      if (newImage) await images.invalidate(newImage.id);
+      throw e;
+    }
 
     if (newImage && data.baseImage != newImage?.id) {
       try {

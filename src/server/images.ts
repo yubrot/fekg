@@ -1,4 +1,4 @@
-import { Readable } from 'stream';
+import type { FileUpload } from 'graphql-upload';
 import { getStorage } from './firebase';
 import { pipeline, SizeLimitter } from './stream';
 import { getSupportedMimeTypeExtension, supportedFileSize } from '../shared/image';
@@ -11,7 +11,7 @@ export interface Image {
   id: ImageId;
 }
 
-export async function update(location: Location, name: string, file: File): Promise<Image> {
+export async function update(location: Location, name: string, file: FileUpload): Promise<Image> {
   const extension = getSupportedMimeTypeExtension(file.mimetype);
   if (!extension) throw `Unsupported filetype: ${file.mimetype}`;
 
@@ -28,10 +28,4 @@ export async function update(location: Location, name: string, file: File): Prom
 
 export async function invalidate(imageId: ImageId): Promise<void> {
   await getStorage().bucket().file(imageId).delete({ ignoreNotFound: true });
-}
-
-// NOTE: This type and graphql-upload/FileUpload are sturcturally compatible.
-export interface File {
-  mimetype: string;
-  createReadStream(): Readable;
 }

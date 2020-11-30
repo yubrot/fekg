@@ -37,9 +37,11 @@ export function create({
   return template;
 }
 
-export function validate({ name }: Template): void {
-  if (name.length == 0) throw 'Template name must not be empty';
-  if (200 < name.length) throw 'Template name is too long';
+export function validate({ name }: Partial<Template>): void {
+  if (name !== null && name !== undefined) {
+    if (name.length == 0) throw 'Template name must not be empty';
+    if (200 < name.length) throw 'Template name is too long';
+  }
 }
 
 export function repository(): Repository {

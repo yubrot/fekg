@@ -1,6 +1,6 @@
 import type { TemplateId, BaseImageId, Accessibility, Label } from '../shared/template';
-import { Rect } from './rect';
-import { UserId } from './user';
+import type { Rect } from './rect';
+import type { UserId } from './user';
 
 export type { TemplateId };
 
